@@ -60,19 +60,19 @@ namespace TestTaskUnit
         [Fact]
         public void TestArea1()
         {
-            Assert.Equal(24, AreaCalculator.CalcArea(10, 6, 8));
+            Assert.Equal(24, AreaCalculator.CalcArea(AreaCalculator.FigureType.Triangle, 10, 6, 8));
         }
 
         [Fact]
         public void TestArea2()
         {
-            Assert.Equal(Math.PI*9, AreaCalculator.CalcArea(3));
+            Assert.Equal(Math.PI*9, AreaCalculator.CalcArea(AreaCalculator.FigureType.Circle, 3));
         }
 
         [Fact]
         public void TestArea3()
         {
-            Assert.Throws<ArgumentException>(()=> { AreaCalculator.CalcArea(10, 6); });
+            Assert.Throws<ArgumentException>(()=> { AreaCalculator.CalcArea(AreaCalculator.FigureType.Triangle, 10, 6); });
         }
     }
 }

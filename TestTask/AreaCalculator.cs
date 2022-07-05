@@ -8,19 +8,27 @@ namespace TestTask
 {
     static public class AreaCalculator
     {
-        public static double CalcArea(params double[] args)
+        public enum FigureType
         {
-            if (args.Length == 1)
+            Circle,
+            Triangle
+        }
+        public static double CalcArea(FigureType figureType, params double[] args)
+        {
+            switch (figureType)
             {
-                return CalcCircleArea(args[0]);
-            }
-            else if (args.Length == 3)
-            {
-                return CalcTriangleArea(args[0], args[1], args[2]);
-            }
-            else
-            {
-                throw new ArgumentException("Incorrect count of args");
+                case FigureType.Circle when args.Length == 1:
+                    {
+                        return CalcCircleArea(args[0]);
+                    }
+                case FigureType.Triangle when args.Length == 3:
+                    {
+                        return CalcTriangleArea(args[0], args[1], args[2]);
+                    }
+                default:
+                    {
+                        throw new ArgumentException("Incorrect count if args");
+                    }
             }
         }
         public static double CalcCircleArea(double r)
